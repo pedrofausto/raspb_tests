@@ -51,7 +51,9 @@ int map_peripheral (struct bcm2835_peripheral *pointer);
 void unmap_peripheral(struct bcm2835_peripheral *pointer);
 
 // Externalizing the struct
-struct	bcm2835_peripheral	gpio;
+struct	bcm2835_peripheral	gpio = {GPIO_BASE};
+
+extern struct bcm2835_peripheral gpio;
 
 
 #endif /* RPINTERFACE_H_ */
