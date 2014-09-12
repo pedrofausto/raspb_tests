@@ -9,6 +9,7 @@
  */
 
 #include "RPInterface.h"
+#include <fcntl.h>
 
 struct bcm2835_peripheral gpio = {GPIO_BASE};
 

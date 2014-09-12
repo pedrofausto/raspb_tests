@@ -8,11 +8,14 @@
  */
 
 #include <stdio.h>
+
 #include <sys/mman.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+
 #include <unistd.h>
-#include <fcntl.h>
+#include <stdio.h>
+
 
 #ifndef RPINTERFACE_H_
 #define RPINTERFACE_H_
@@ -49,5 +52,6 @@ struct bcm2835_peripheral {
 
 // Externalizing the struct
 extern	struct	bcm2835_peripheral	gpio;
+
 
 #endif /* RPINTERFACE_H_ */
