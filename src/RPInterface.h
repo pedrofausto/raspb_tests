@@ -47,9 +47,11 @@ struct bcm2835_peripheral {
     volatile unsigned int *addr;
 };
 
+int map_peripheral (struct bcm2835_peripheral *pointer);
+void unmap_peripheral(struct bcm2835_peripheral *pointer);
 
 // Externalizing the struct
-extern	struct	bcm2835_peripheral	gpio;
+struct	bcm2835_peripheral	gpio;
 
 
 #endif /* RPINTERFACE_H_ */
