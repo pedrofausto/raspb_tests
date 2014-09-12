@@ -12,8 +12,9 @@ int main (int argc, char* argv[])
 	if(map_peripheral(&gpio) == -1)
 	{
 		perror("Failed to map the physical GPIO registers into virtual memory.\n");
+		return -1;
 	}
-	return -1;
+
 
 
 /*
