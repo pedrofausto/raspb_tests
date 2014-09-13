@@ -28,6 +28,9 @@ int main (int argc, char* argv[])
 
 	while(1)
 	{
+
+		sleep(1);
+		GPIO_SET = 1 << 14;
 		sleep(1);
 		GPIO_CLR = 1 << 14;
 	}
