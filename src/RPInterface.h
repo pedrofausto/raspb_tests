@@ -7,16 +7,22 @@
  *      then configure and access GPIOs
  */
 
+#ifndef RPINTERFACE_H_
+#define RPINTERFACE_H_
+
 #include <stdio.h>
+
+#include <string.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <assert.h>
+
 #include <sys/mman.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+
 #include <unistd.h>
-#include <stdio.h>
 
-
-#ifndef RPINTERFACE_H_
-#define RPINTERFACE_H_
 
 /*
  * GPIO controller base address 0x20000000
@@ -26,6 +32,17 @@
 #define GPIO_BASE               (BCM2708_PERI_BASE + 0x200000)
 
 #define BLOCK_SIZE 				(4*1024)
+
+
+// Input/Output Access
+struct bcm2835_peripheral {
+    unsigned long addr_p;
+    int mem_fd;
+    void *map;
+    volatile unsigned int *addr;
+};
+
+extern struct bcm2835_peripheral gpio;
 
 /*
  * GPIO setup macros. Always use INP_GPIO(x) before using OUT_GPIO(x)
@@ -39,21 +56,7 @@
 
 #define GPIO_READ(g)  *(gpio.addr + 13) &= (1<<(g))
 
-// Input/Output Access
-struct bcm2835_peripheral {
-    unsigned long addr_p;
-    int mem_fd;
-    void *map;
-    volatile unsigned int *addr;
-};
-
 int map_peripheral (struct bcm2835_peripheral *pointer);
 void unmap_peripheral(struct bcm2835_peripheral *pointer);
-
-// Externalizing the struct
-struct	bcm2835_peripheral	gpio = {GPIO_BASE};
-
-extern struct bcm2835_peripheral gpio;
-
 
 #endif /* RPINTERFACE_H_ */

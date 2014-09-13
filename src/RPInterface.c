@@ -9,7 +9,6 @@
  */
 
 #include "RPInterface.h"
-#include <fcntl.h>
 
 struct bcm2835_peripheral gpio = {GPIO_BASE};
 
@@ -24,7 +23,7 @@ int map_peripheral (struct bcm2835_peripheral *pointer)
 	if(pointer == NULL)
 	{
 		perror("Couldn't open the device /dev/mem. Please, try checking your permissions\n");
-		return	1;
+		return	-1;
 	}
 
 	pointer->map = mmap(
@@ -39,7 +38,7 @@ int map_peripheral (struct bcm2835_peripheral *pointer)
 	if (pointer->map == MAP_FAILED)
 	{
 		perror("mmap error.\n");
-		return	1;
+		return	-1;
 	}
 
 	pointer->addr = (volatile unsigned int *)pointer->map;
