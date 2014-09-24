@@ -52,3 +52,41 @@ void unmap_peripheral(struct bcm2835_peripheral *pointer)
 	close(pointer->mem_fd);
 }
 
+int configInput(int gpioNumber)
+{
+	assert(gpioNumber <= 40 || gpioNumber >= 1);
+
+	if((INP_GPIO(gpioNumber)))
+		return 0;
+	else
+	{
+		printf("Failed to set GPIO %d as input.\n", gpioNumber);
+		return -1;
+	}
+}
+
+int configOutput(int gpioNumber)
+{
+	assert(gpioNumber <= 40 || gpioNumber >= 1);
+
+	if((OUT_GPIO(gpioNumber)))
+		return 0;
+	else
+	{
+		printf("Failed to set GPIO %d as output.\n", gpioNumber);
+		return -1;
+	}
+}
+
+void setOutput(int gpioNumber)
+{
+	assert(gpioNumber <= 40 || gpioNumber >= 1);
+	GPIO_SET = 1 << gpioNumber;
+}
+
+void clearOutput(int gpioNumber)
+{
+	assert(gpioNumber <= 40 || gpioNumber >= 1);
+	GPIO_CLR = 1 << gpioNumber;
+}
+

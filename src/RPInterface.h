@@ -58,5 +58,9 @@ extern struct bcm2835_peripheral gpio;
 
 int map_peripheral (struct bcm2835_peripheral *pointer);
 void unmap_peripheral(struct bcm2835_peripheral *pointer);
+int configInput(int gpioNumber);
+int configOutput(int gpioNumber);
+void setOutput(int gpioNumber);
+void clearOutput(int gpioNumber);
 
 #endif /* RPINTERFACE_H_ */
