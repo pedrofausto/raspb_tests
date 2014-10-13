@@ -62,5 +62,6 @@ int configInput(int gpioNumber);
 int configOutput(int gpioNumber);
 void setOutput(int gpioNumber);
 void clearOutput(int gpioNumber);
+int  readInput(int gpioNumber);
 
 #endif /* RPINTERFACE_H_ */

@@ -8,6 +8,9 @@
 #include "RPInterface.h"
 #include <stdio.h>
 #include <assert.h>
+#include <sys/time.h>
+
+unsigned int time = 0;
 
 int main (int argc, char* argv[])
 {
@@ -27,14 +30,15 @@ int main (int argc, char* argv[])
 	configInput(14);
 	configOutput(14);
 
-	while(1)
-	{
+	configInput(15);
 
-		sleep(1);
-		setOutput(14);
-		sleep(1);
-		clearOutput(14);
+	setOutput(14);
+	while(readInput(15) == 0)
+	{
+		time++;
+		usleep(1);
 	}
 
+	printf("microsseconds: %d", time);
 
 }
