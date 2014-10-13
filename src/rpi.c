@@ -7,6 +7,7 @@
 
 #include "RPInterface.h"
 #include <stdio.h>
+#include <assert.h>
 
 int main (int argc, char* argv[])
 {
@@ -23,16 +24,16 @@ int main (int argc, char* argv[])
  * This means that we need to change the registers that belongs to GPIO 14
  */
 
-	INP_GPIO(14);
-	OUT_GPIO(14);
+	configInput(14);
+	configOutput(14);
 
 	while(1)
 	{
 
 		sleep(1);
-		GPIO_SET = 1 << 14;
+		setOutput(14);
 		sleep(1);
-		GPIO_CLR = 1 << 14;
+		clearOutput(14);
 	}
 
 
