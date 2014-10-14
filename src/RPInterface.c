@@ -90,7 +90,7 @@ void clearOutput(int gpioNumber)
 	GPIO_CLR = 1 << gpioNumber;
 }
 
-int readInput(int gpioNumber)
+int readPin(int gpioNumber)
 {
 	assert(gpioNumber <= 40 || gpioNumber >= 1);
 	return GPIO_READ(gpioNumber);
