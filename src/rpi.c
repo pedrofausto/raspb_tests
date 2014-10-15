@@ -27,18 +27,18 @@ int main (int argc, char* argv[])
  * This means that we need to change the registers that belongs to GPIO 14
  */
 
-	configInput(24);
-	configOutput(25);
+	configInput(23);
+	configOutput(23);
 
-	configInput(25);
+	configInput(24);
 
 	while(1)
 	{
 		sleep(1);
-		setOutput(24);
-		printf("Pin 24: %c\n", readPin(24));
+		setOutput(23);
+		printf("Pin 23: %c\n", readPin(23));
 		sleep(1);
-		printf("Pin 24: %c\n", readPin(25));
+		printf("Pin 24: %c\n", readPin(24));
 	}
 
 }
